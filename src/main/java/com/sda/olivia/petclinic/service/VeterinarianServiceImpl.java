@@ -7,6 +7,7 @@ import com.sda.olivia.petclinic.service.dto.VeterinarianDto;
 import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class VeterinarianServiceImpl implements VeterinarianService {
@@ -54,6 +55,36 @@ public class VeterinarianServiceImpl implements VeterinarianService {
     @Override
     public void deleteById(Long id) {
         veterinarianRepository.deleteById(id);
+    }
+
+    @Override
+    public void update(String firstName, String lastName, String address, String speciality) throws InvalidParameterException {
+
+    }
+
+    @Override
+    public void update(Long id, String firstName, String lastName, String address, String speciality) throws InvalidParameterException {
+        if (firstName == null || firstName.isBlank()) {
+            throw new InvalidParameterException("First name is null or empty");
+        }
+        if (lastName == null || lastName.isBlank()) {
+            throw new InvalidParameterException("Last name is null or empty");
+        }
+        if (address == null || address.isBlank()) {
+            throw new InvalidParameterException("Address is null or empty");
+        }
+        if (speciality == null || speciality.isBlank()) {
+            throw new InvalidParameterException("Speciality is null or empty");
+        }
+        Optional<Veterinarian> veterinarian = veterinarianRepository.findById(id);
+
+        if(veterinarian.isPresent()){
+            veterinarian.get().setFirstName(firstName);
+            veterinarian.get().setLastName(lastName);
+            veterinarian.get().setAddress(address);
+            veterinarian.get().setSpeciality(speciality);
+            veterinarianRepository.update(veterinarian.get());
+        }
     }
 }
 
