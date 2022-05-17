@@ -11,5 +11,7 @@ public interface VeterinarianService {
 
     List<VeterinarianDto> findAll();
 
+    void deleteById(Long id);
+
 
 }
