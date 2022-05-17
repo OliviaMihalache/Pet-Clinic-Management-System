@@ -57,4 +57,18 @@ public class VeterinarianController {
                         )
                 );
     }
+    public void deleteById(){
+        try {
+
+
+            System.out.println(" Please insert the vet id ");
+            String idString = scanner.nextLine();
+            Long id = Long.parseLong(idString);
+            veterinarianService.deleteById(id);
+
+            System.out.println("Vet was successfully deleted");
+        }catch (NumberFormatException e){
+            System.out.println("Invalid parameter");
+        }
+    }
 }
