@@ -1,9 +1,12 @@
 package com.sda.olivia.petclinic.controller;
 
+import com.sda.olivia.petclinic.model.Veterinarian;
 import com.sda.olivia.petclinic.service.VeterinarianService;
 import com.sda.olivia.petclinic.service.VeterinarianServiceImpl;
+import com.sda.olivia.petclinic.service.dto.VeterinarianDto;
 import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class VeterinarianController {
@@ -34,5 +37,24 @@ public class VeterinarianController {
             System.out.println("Veterinarian was not created, internal server error");
         }
 
+    }
+
+    public void showAllVeterinarians() {
+        List<VeterinarianDto> vets = veterinarianService.findAll();
+        if (vets.isEmpty()) {
+            System.out.println("No vets");
+            return;
+        }
+
+        vets.stream()
+                .forEach(veterinarianDto ->
+                        System.out.println(
+                                "\nID: " + veterinarianDto.getId()
+                                        + "\n First Name " + veterinarianDto.getFirstName()
+                                        + "\n Last Name " + veterinarianDto.getLastName()
+                                        + "\n Address " + veterinarianDto.getAddress()
+                                        + "\n Speciality " + veterinarianDto.getSpeciality()
+                        )
+                );
     }
 }
