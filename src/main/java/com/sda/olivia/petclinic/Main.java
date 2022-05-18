@@ -1,5 +1,6 @@
 package com.sda.olivia.petclinic;
 
+import com.sda.olivia.petclinic.controller.PetController;
 import com.sda.olivia.petclinic.controller.VeterinarianController;
 import com.sda.olivia.petclinic.option.UserOption;
 import com.sda.olivia.petclinic.utils.SessionManager;
@@ -11,6 +12,7 @@ public class Main {
 
         SessionManager.getSessionFactory().openSession();
         VeterinarianController veterinarianController = new VeterinarianController();
+        PetController petController = new PetController();
         UserOption option = UserOption.UNKNOWN;
         Scanner scanner = new Scanner(System.in);
         do {
@@ -37,6 +39,10 @@ public class Main {
                 case UPDATE:
                     veterinarianController.update();
                     break;
+                case ADD_NEW_PET:
+                    petController.addPet();
+                    break;
+
                 case UNKNOWN:
                     break;
                 case EXIT:

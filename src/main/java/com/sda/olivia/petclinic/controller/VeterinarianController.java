@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class VeterinarianController {
     private final VeterinarianService veterinarianService;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public VeterinarianController() {
         this.veterinarianService = new VeterinarianServiceImpl();
