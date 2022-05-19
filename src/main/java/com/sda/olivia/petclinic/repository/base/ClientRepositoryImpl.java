@@ -18,8 +18,7 @@ public class ClientRepositoryImpl extends BaseRepositoryImpl<Client, Long> imple
     public Optional<Client> findByName(String firstName, String lastName) {
         try {
             Session session = SessionManager.getSessionFactory().openSession();
-            Query<Client> query = session.createQuery("FROM Client c WHERE c.firstName=:firstName AND" +
-                    "c.lastName=:lastName", Client.class);
+            Query<Client> query = session.createQuery("FROM Client c WHERE c.firstName=:firstName AND " + "c.lastName=:lastName", Client.class);
             query.setParameter("firstName", firstName);
             query.setParameter("lastName", lastName);
             List<Client> clients =query.list();

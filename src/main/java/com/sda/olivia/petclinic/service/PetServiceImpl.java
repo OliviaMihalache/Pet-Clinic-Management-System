@@ -10,6 +10,7 @@ import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
 import java.util.Date;
 import java.util.InvalidPropertiesFormatException;
+import java.util.List;
 import java.util.Optional;
 
 public class PetServiceImpl implements PetService {
@@ -51,7 +52,10 @@ public class PetServiceImpl implements PetService {
         petRepository.create(pet);
     }
 
-
+    @Override
+    public List<Pet> findAllVaccinated() {
+        return petRepository.findAllVaccinated();
+    }
 }
 
 
