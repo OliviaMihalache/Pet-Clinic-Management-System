@@ -2,13 +2,14 @@ package com.sda.olivia.petclinic.controller;
 
 import com.sda.olivia.petclinic.service.PetService;
 import com.sda.olivia.petclinic.service.PetServiceImpl;
+import com.sda.olivia.petclinic.service.dto.PetDto;
 import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
-import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class PetController {
@@ -61,4 +62,32 @@ public class PetController {
                 .forEach(pet -> System.out.println("Race: " + pet.getRace() +
                         " Date of birth: " + FORMATTER.format(pet.getDateOfBirth()) + " Is vaccinated " + (pet.getVaccinated()?"YES":"NO")));
     }
-}
+    public void showAllPets(){
+        List<PetDto> pets = petService.findAll();
+        if(pets.isEmpty()){
+            System.out.println("No pets");
+            return;
+
+        }
+        pets.stream().forEach(petDto ->
+                System.out.println("\n Id: " + petDto.getId()+
+                        "\n: Race "+ petDto.getRace() +
+                        " \n: Date of birth: "+petDto.getDateOfBirth()+
+                        "\n: IsVaccinated " + petDto.getVaccinated()));
+    }
+    public void deletePetsById()    {
+        try {
+
+
+            System.out.println(" Please insert the pet id ");
+            String idString = scanner.nextLine();
+            Long id = Long.parseLong(idString);
+            petService.deletePetsById(id);
+
+            System.out.println("Pet was successfully deleted");
+        }catch (NumberFormatException e){
+            System.out.println("Invalid parameter");
+        }
+    }
+    }
+

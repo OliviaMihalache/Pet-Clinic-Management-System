@@ -6,12 +6,14 @@ import com.sda.olivia.petclinic.repository.base.ClientRepository;
 import com.sda.olivia.petclinic.repository.base.ClientRepositoryImpl;
 import com.sda.olivia.petclinic.repository.base.PetRepository;
 import com.sda.olivia.petclinic.repository.base.PetRepositoryImpl;
+import com.sda.olivia.petclinic.service.dto.PetDto;
 import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
 import java.util.Date;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PetServiceImpl implements PetService {
 
@@ -55,6 +57,14 @@ public class PetServiceImpl implements PetService {
     @Override
     public List<Pet> findAllVaccinated() {
         return petRepository.findAllVaccinated();
+    }
+    public List<PetDto> findAll(){
+        return petRepository.findAll().stream().map(pet -> new PetDto(pet.getId(),
+                pet.getRace(),pet.getDateOfBirth(),pet.getVaccinated())).collect(Collectors.toList());
+
+    }
+    public void deletePetsById(Long id){
+        petRepository.deleteById(id);
     }
 }
 

@@ -1,6 +1,7 @@
 package com.sda.olivia.petclinic.service;
 
 import com.sda.olivia.petclinic.model.Pet;
+import com.sda.olivia.petclinic.service.dto.PetDto;
 import com.sda.olivia.petclinic.service.exception.InvalidParameterException;
 
 import java.util.Date;
@@ -16,4 +17,7 @@ public interface PetService {
             throws InvalidPropertiesFormatException, InvalidParameterException;
 
     List<Pet> findAllVaccinated();
+    List<PetDto> findAll();
+    void deletePetsById(Long id);
+
 }
