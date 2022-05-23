@@ -53,6 +53,9 @@ public class Main {
                 case SHOW_ALL_PETS:
                     petController.showAllPets();
                     break;
+                case DELETE_PETS_BY_ID:
+                    petController.deletePetsById();
+                    break;
                 case UNKNOWN:
                     break;
                 case EXIT:

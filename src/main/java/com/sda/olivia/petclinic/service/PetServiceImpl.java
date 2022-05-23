@@ -63,6 +63,9 @@ public class PetServiceImpl implements PetService {
                 pet.getRace(),pet.getDateOfBirth(),pet.getVaccinated())).collect(Collectors.toList());
 
     }
+    public void deletePetsById(Long id){
+        petRepository.deleteById(id);
+    }
 }
 
 

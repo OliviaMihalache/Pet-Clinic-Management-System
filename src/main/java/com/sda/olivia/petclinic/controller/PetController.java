@@ -75,4 +75,19 @@ public class PetController {
                         " \n: Date of birth: "+petDto.getDateOfBirth()+
                         "\n: IsVaccinated " + petDto.getVaccinated()));
     }
-}
+    public void deletePetsById()    {
+        try {
+
+
+            System.out.println(" Please insert the pet id ");
+            String idString = scanner.nextLine();
+            Long id = Long.parseLong(idString);
+            petService.deletePetsById(id);
+
+            System.out.println("Pet was successfully deleted");
+        }catch (NumberFormatException e){
+            System.out.println("Invalid parameter");
+        }
+    }
+    }
+
