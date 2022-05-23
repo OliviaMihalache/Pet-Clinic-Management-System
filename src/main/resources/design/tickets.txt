@@ -40,9 +40,11 @@ Done: PCMS-13 Create Base Repository classes
 
 Done: PCMS-14 As a User, I should be able to view all the vaccinated pets.
 
-PCMS-15 As a User, I should be able to view all the pets for a client id.
+Done: PCMS-15 As a User, I should be able to view all the pets for a client id.
 
-PCMS-16 As a User, I should be able to view all the consults with unvaccinated pets.
+
+
+Done: PCMS-16 As a User, I should be able to view all the consults with unvaccinated pets.
 
 PCMS-17 As a User, I should be able to view all the clients with more than one pet.
 
