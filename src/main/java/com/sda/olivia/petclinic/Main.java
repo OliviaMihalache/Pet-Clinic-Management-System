@@ -1,5 +1,6 @@
 package com.sda.olivia.petclinic;
 
+import com.sda.olivia.petclinic.controller.ClientController;
 import com.sda.olivia.petclinic.controller.PetController;
 import com.sda.olivia.petclinic.controller.VeterinarianController;
 import com.sda.olivia.petclinic.option.UserOption;
@@ -13,6 +14,7 @@ public class Main {
         SessionManager.getSessionFactory().openSession();
         VeterinarianController veterinarianController = new VeterinarianController();
         PetController petController = new PetController();
+        ClientController clientController = new ClientController();
         UserOption option = UserOption.UNKNOWN;
         Scanner scanner = new Scanner(System.in);
         do {
@@ -45,7 +47,12 @@ public class Main {
                 case VIEW_ALL_VACCINATED:
                     petController.showAllVaccinated();
                     break;
-
+                case VIEW_ALL_PETS_FOR_CLIENT_ID:
+                    clientController.viewAllPetsForClient();
+                    break;
+                case SHOW_ALL_PETS:
+                    petController.showAllPets();
+                    break;
                 case UNKNOWN:
                     break;
                 case EXIT:
