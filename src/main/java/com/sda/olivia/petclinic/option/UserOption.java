@@ -18,6 +18,7 @@ public enum UserOption {
     DELETE_PETS_BY_ID("Delete pets by id ", 9),
     ADD_NEW_CONSULT("Add new consult", 11),
     SHOW_ALL_CONSULTS_WITH_UNVACCINATED_PETS("Show all consults with unvaccinated pets", 12),
+    SHOW_ALL_CONSULTS_BY_VETS_AND_DATES("Show all consults ", 13),
     EXIT("Exit", 999),
     UNKNOWN("Unknown option, try again", 1000);
 

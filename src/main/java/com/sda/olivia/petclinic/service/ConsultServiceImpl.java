@@ -61,5 +61,17 @@ public class ConsultServiceImpl implements ConsultService {
         return consultRepository.findAllUnvaccinatedPets();
     }
 
-
+    @Override
+    public List<Consult> findAllByVetIdAndDateBetween(Long vetId, Date startDate, Date endDate) throws InvalidParameterException{
+        if(vetId == null) {
+            throw new InvalidParameterException("Invalid vet id");
+        }
+        if(startDate == null){
+            throw new InvalidParameterException("Invalid  start date");
+        }
+        if (endDate == null) {
+            throw new InvalidParameterException("Invalid end date");
+        }
+        return consultRepository.findAllByVetIdAndDateBetween(vetId, startDate,endDate);
+    }
 }
