@@ -59,8 +59,12 @@ public class PetServiceImpl implements PetService {
         return petRepository.findAllVaccinated();
     }
     public List<PetDto> findAll(){
-        return petRepository.findAll().stream().map(pet -> new PetDto(pet.getId(),
-                pet.getRace(),pet.getDateOfBirth(),pet.getVaccinated())).collect(Collectors.toList());
+        return petRepository
+                .findAll().stream()
+                .map(pet -> new PetDto(pet.getId(),
+                pet.getRace(),
+                pet.getDateOfBirth(),
+                pet.getVaccinated())).collect(Collectors.toList());
 
     }
     public void deletePetsById(Long id){

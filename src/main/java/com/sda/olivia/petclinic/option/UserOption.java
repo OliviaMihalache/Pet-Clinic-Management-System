@@ -16,6 +16,8 @@ public enum UserOption {
     VIEW_ALL_PETS_FOR_CLIENT_ID(" View all pets for client id ", 7),
     SHOW_ALL_PETS("Display all pets ", 8),
     DELETE_PETS_BY_ID("Delete pets by id ", 9),
+    ADD_NEW_CONSULT("Add new consult", 11),
+    SHOW_ALL_CONSULTS_WITH_UNVACCINATED_PETS("Show all consults with unvaccinated pets", 12),
     EXIT("Exit", 999),
     UNKNOWN("Unknown option, try again", 1000);
 
@@ -47,4 +49,5 @@ public enum UserOption {
                 .filter(userOption -> userOption.getOptionNumber() == optionNumber)
                 .findAny();
     }
+
 }

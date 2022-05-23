@@ -1,6 +1,7 @@
 package com.sda.olivia.petclinic;
 
 import com.sda.olivia.petclinic.controller.ClientController;
+import com.sda.olivia.petclinic.controller.ConsultController;
 import com.sda.olivia.petclinic.controller.PetController;
 import com.sda.olivia.petclinic.controller.VeterinarianController;
 import com.sda.olivia.petclinic.option.UserOption;
@@ -15,6 +16,7 @@ public class Main {
         VeterinarianController veterinarianController = new VeterinarianController();
         PetController petController = new PetController();
         ClientController clientController = new ClientController();
+        ConsultController consultController = new ConsultController();
         UserOption option = UserOption.UNKNOWN;
         Scanner scanner = new Scanner(System.in);
         do {
@@ -55,6 +57,12 @@ public class Main {
                     break;
                 case DELETE_PETS_BY_ID:
                     petController.deletePetsById();
+                    break;
+                case ADD_NEW_CONSULT:
+                    consultController.create();
+                    break;
+                case SHOW_ALL_CONSULTS_WITH_UNVACCINATED_PETS:
+                    consultController.viewAllUnvaccinatedPets();
                     break;
                 case UNKNOWN:
                     break;
